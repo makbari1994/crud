@@ -1,0 +1,31 @@
+<div class="center">
+    <button class="btn btn-info mb-3" routerLink="/create-edit">Create Customer</button>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>DateOfBirth</th>
+                <th>PhoneNumber</th>
+                <th>Email</th>
+                <th>BankAccountNumber</th>
+                <th>Edit</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr class="item" *ngFor="let item of customerList; let i = index">
+                <td>{{item.Firstname}}</td>
+                <td>{{item.Lastname}}</td>
+                <td>{{item.DateOfBirth}}</td>
+                <td>{{item.PhoneNumber}}</td>
+                <td>{{item.Email}}</td>
+                <td>{{item.BankAccountNumber}}</td>
+                <td><a class="btn btn-info" routerLink="/create-edit/{{item.Firstname}}">Edit</a></td>
+                <td><i class="fa fa-trash text-danger" (click)="remove(i)"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

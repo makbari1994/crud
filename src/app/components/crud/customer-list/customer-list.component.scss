@@ -1,0 +1,14 @@
+.center {
+    width: 90%;
+    margin: 50px auto;
+    div {
+        margin-top: 10px;
+    }
+    th,
+    td {
+        text-align: center;
+        i {
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,60 @@
+<form (ngSubmit)="submit()" [formGroup]="form">
+
+    <div class="center">
+        <button class="btn btn-info" routerLink="/list">Customer List</button>
+        <div class="col-12">
+            <label>FirstName</label>
+            <input type="text" class="form-control" formControlName="Firstname">
+            <div *ngIf="form.controls['Firstname'].invalid && ((form.controls['Firstname'].dirty || form.controls['Firstname'].touched) || submited)"
+                class="alert alert-danger form-danger" role="alert">
+                FirstName Is Not Correct
+            </div>
+        </div>
+        <div class="col-12">
+            <label>LastName</label>
+            <input type="text" class="form-control" formControlName="Lastname">
+            <div *ngIf="form.controls['Lastname'].invalid && ((form.controls['Lastname'].dirty || form.controls['Lastname'].touched) || submited)"
+                class="alert alert-danger form-danger" role="alert">
+                Lastname Is Not Correct
+            </div>
+        </div>
+        <div class="col-12">
+            <label>DateOfBirth</label>
+            <input type="text" class="form-control" formControlName="DateOfBirth">
+            <div *ngIf="form.controls['DateOfBirth'].invalid && ((form.controls['DateOfBirth'].dirty || form.controls['DateOfBirth'].touched) || submited)"
+                class="alert alert-danger form-danger" role="alert">
+                DateOfBirth Is Not Correct
+            </div>
+        </div>
+        <div class="col-12">
+            <label>PhoneNumber</label>
+            <input type="text" class="form-control" formControlName="PhoneNumber">
+            <div *ngIf="form.controls['PhoneNumber'].invalid && ((form.controls['PhoneNumber'].dirty || form.controls['PhoneNumber'].touched) || submited)"
+                class="alert alert-danger form-danger" role="alert">
+                PhoneNumber Is Not Correct
+            </div>
+        </div>
+        <div class="col-12">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="Email">
+            <div *ngIf="form.controls['Email'].invalid && ((form.controls['Email'].dirty || form.controls['Email'].touched) || submited)"
+                class="alert alert-danger form-danger" role="alert">
+                Email Is Not Correct
+            </div>
+        </div>
+        <div class="col-12">
+            <label>BankAccountNumber</label>
+            <input type="text" class="form-control" formControlName="BankAccountNumber">
+            <div *ngIf="form.controls['BankAccountNumber'].invalid && ((form.controls['BankAccountNumber'].dirty || form.controls['BankAccountNumber'].touched) || submited)"
+                class="alert alert-danger form-danger" role="alert">
+                BankAccountNumber Is Not Correct
+            </div>
+        </div>
+        <div class="col-12 button">
+            <button class="btn btn-info" type="submit">{{type == 'create'? 'Create': 'Edit'}}</button>
+        </div>
+
+        <div class="alert alert-{{res ? 'success': 'danger'}}" *ngIf="resMessage">{{resMessage}}</div>
+
+    </div>
+</form>
