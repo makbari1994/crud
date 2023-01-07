@@ -9,7 +9,10 @@ export class CustomerService {
   constructor() { }
 
   create(data: ICustomer): boolean {
-    const customers: Array<ICustomer> = this.getStorage();
+    let customers: Array<ICustomer> = this.getStorage();
+    if (!Array.isArray(customers)) {
+      customers = []
+    }
     const index = customers.findIndex(a => a.Firstname == data.Firstname || a.Lastname == data.Lastname || a.DateOfBirth == data.DateOfBirth)
     if (index == -1) {
       customers.push(data);
@@ -21,7 +24,10 @@ export class CustomerService {
 
 
   edit(data: ICustomer, Firstname: string): boolean {
-    const customers: Array<ICustomer> = this.getStorage();
+    let customers: Array<ICustomer> = this.getStorage();
+    if (!Array.isArray(customers)) {
+      customers = []
+    }
     const index = customers.findIndex(a => a.Firstname == Firstname);
     if (index > -1) {
       customers[index] = { ...data };
@@ -41,9 +47,15 @@ export class CustomerService {
   getStorage(): Array<ICustomer> {
     let storage = localStorage.getItem('customers');
     let customers: Array<ICustomer> = [];
-    if (storage) {
-      customers = JSON.parse(storage);
+    try {
+      if (storage) {
+        customers = JSON.parse(storage);
+      }
     }
+    catch (e) {
+      customers = [];
+    }
+
     return customers;
   }
 
